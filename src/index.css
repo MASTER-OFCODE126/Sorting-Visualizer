@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+.card {
+    position: relative;
+    /* padding: 3px; */
+    isolation: isolate;
+    
+    /* z-index: 0; */
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.card::after,.card::after {
+    --angle:0deg;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background-color: red; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* translate: -50% -50%; */
+    z-index: -1;
+    /* padding: 2px; */
+    /* border-radius: 10%; */
+    background-image: conic-gradient( from var(--angle), 
+            /* #ec4899,
+            #8b5cf6,
+            #22c55e,
+            #ec4899 */
+            #ff4545,
+            #00ff99,
+            /* #6366f1, */
+            #006aff,
+            #d946ef,
+            /* #22d3ee, */
+            #ff0095,
+            #ff4545
+            );
+    inset: -3px;
+    animation: spun 2.2s cubic-bezier(0.1, 0.0, 0.1, 0.1) infinite;
+}
+.card::before{
+    filter: blur(2rem);
+    opacity: 0.5;
+}
+@keyframes spun {
+    from{
+        --angle:0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
